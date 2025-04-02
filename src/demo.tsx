@@ -1,8 +1,7 @@
 import React, { use, useEffect, useState } from "react";
 import axios from "axios";
 import "bootstrap/dist/css/bootstrap.min.css";
-import { error } from "console";
-import { URLSearchParams } from "url";
+
 
 interface State {
   stateId: number;
