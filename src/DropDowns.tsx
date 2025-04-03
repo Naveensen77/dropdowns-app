@@ -16,7 +16,7 @@ interface district {
   districtNameEng: string;
 }
 
-const App: React.FC = () => {
+const DropDowns: React.FC = () => {
   const [states, setStates] = useState<State[]>([]);
   const [divisions, setDivisions] = useState<Division[]>([]);
   const [selectedState, setSelectedState] = useState<number | null>(null);
@@ -168,4 +168,4 @@ const App: React.FC = () => {
   );
 };
 
-export default App;
+export default DropDowns;

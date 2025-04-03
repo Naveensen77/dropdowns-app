@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import reportWebVitals from './reportWebVitals';
-import Demo from './demo';
+import DropDowns from './DropDowns';
 import WatherReport from './WatherReport';
 
 const root = ReactDOM.createRoot(
@@ -10,6 +10,7 @@ const root = ReactDOM.createRoot(
 root.render(
   <React.StrictMode>
    <WatherReport />
+   <DropDowns/>
   </React.StrictMode>
 );
 
