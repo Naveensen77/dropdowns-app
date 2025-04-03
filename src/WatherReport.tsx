@@ -7,8 +7,10 @@ interface WeatherResData {
     temp: number;
     humidity: number;
   };
-  weather: { description: string }[];
+  weather: { 
+    description: string;main: string}[];
   wind: { speed: number };
+  sys: {country: string}
 }
 
 const WatherReport: React.FC = () => {
@@ -30,6 +32,7 @@ const WatherReport: React.FC = () => {
           setWeatherData(response.data);
         })
         .catch((error) => {
+            alert("Data Not Found")
             console.error("Error fetching weather data:", error);
           });
     }
@@ -47,32 +50,36 @@ const WatherReport: React.FC = () => {
             ></input>
           </div>
           <div className="col-md-3">
-            <button className="btn" onClick={Getdata}>
+            <button className="btn btn-outline-primary" onClick={Getdata}>
               Search
             </button>
           </div>
         </div>
-        <table className="table table-hover">
+        <table className="table table-hover mt-5">
           <thead>
             <tr>
               <th scope="col">#</th>
+              <th scope="col">country: {weatherData?.sys.country}</th>
               <th scope="col">
-                temp{" "}
+                temp:{" "}
                 {weatherData
                   ? `${Math.round(weatherData?.main.temp)} °C`
                   : "--"}
               </th>
               <th scope="col">
-                humidity{" "}
+                humidity:{" "}
                 {weatherData
                   ? `${Math.round(weatherData?.main.humidity)} %`
                   : "--"}
               </th>
               <th scope="col">
-                description {weatherData?.weather[0].description}
+                description: {weatherData?.weather[0].description}
               </th>
               <th scope="col">
-                speed{" "}
+                cloud: {weatherData?.weather[0].main}
+              </th>
+              <th scope="col">
+                speed:{" "}
                 {weatherData
                   ? `${Math.round(weatherData?.wind.speed)} km/h`
                   : "--"}
