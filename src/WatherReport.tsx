@@ -7,10 +7,12 @@ interface WeatherResData {
     temp: number;
     humidity: number;
   };
-  weather: { 
-    description: string;main: string}[];
+  weather: {
+    description: string;
+    main: string;
+  }[];
   wind: { speed: number };
-  sys: {country: string}
+  sys: { country: string };
 }
 
 const WatherReport: React.FC = () => {
@@ -32,9 +34,9 @@ const WatherReport: React.FC = () => {
           setWeatherData(response.data);
         })
         .catch((error) => {
-            alert("Data Not Found")
-            console.error("Error fetching weather data:", error);
-          });
+          alert("Data Not Found");
+          console.error("Error fetching weather data:", error);
+        });
     }
   }
 
@@ -43,7 +45,7 @@ const WatherReport: React.FC = () => {
       <div className="card-body">
         <h5 className="card-title text-bg-secondary  p-3">Wather Report</h5>
         <div className="row">
-          <div className="col-md-3">
+          <div className="col-md-5">
             <input
               className="form-control"
               onChange={(e) => setinputCity(e.target.value)}
@@ -75,9 +77,7 @@ const WatherReport: React.FC = () => {
               <th scope="col">
                 description: {weatherData?.weather[0].description}
               </th>
-              <th scope="col">
-                cloud: {weatherData?.weather[0].main}
-              </th>
+              <th scope="col">cloud: {weatherData?.weather[0].main}</th>
               <th scope="col">
                 speed:{" "}
                 {weatherData
