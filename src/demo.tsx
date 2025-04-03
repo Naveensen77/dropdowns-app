@@ -2,7 +2,6 @@ import React, { use, useEffect, useState } from "react";
 import axios from "axios";
 import "bootstrap/dist/css/bootstrap.min.css";
 
-
 interface State {
   stateId: number;
   stateNameEng: string;
