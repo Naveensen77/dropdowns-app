@@ -2,8 +2,8 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import reportWebVitals from './reportWebVitals';
 import DropDowns from './DropDowns';
-import WatherReport from './WatherReport';
-import DataInsert from './DataInsert'
+// import WatherReport from './WatherReport';
+// import DataInsert from './DataInsert'
 import "bootstrap/dist/css/bootstrap.min.css";
 
 const root = ReactDOM.createRoot(
