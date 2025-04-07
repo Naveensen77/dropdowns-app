@@ -1,5 +1,5 @@
 const Strings ={
-    dropDownApi:"https://0068-122-168-189-90.ngrok-free.app"
+    dropDownApi:"https://bynaveen.loca.lt/"
 }
 
 export default Strings;
