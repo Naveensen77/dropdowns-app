@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import "bootstrap/dist/css/bootstrap.min.css";
+import  constants from "./constants"
 
 interface State {
   stateId: number;
@@ -26,12 +27,13 @@ const DropDowns: React.FC = () => {
   useEffect(() => {
     // Fetch states
     axios
-      .post("https://localhost:44310/api/DropdownApi/GetState", {
+      .post(`${constants.dropDownApi}/api/DropdownApi/GetState`, {
         headers: {
           "Content-Type": "application/json",
         },
       })
       .then((response) => {
+        debugger
         if (
           response.data &&
           response.data.data &&
@@ -54,7 +56,7 @@ const DropDowns: React.FC = () => {
       // Fetch divisions based on selected state
       axios
         .post(
-          `https://localhost:44310/api/DropdownApi/GetDivision?stateId=${selectedState}`,
+          `${constants.dropDownApi}/api/DropdownApi/GetDivision?stateId=${selectedState}`,
           {
             headers: {
               "Content-Type": "application/json",
@@ -63,6 +65,7 @@ const DropDowns: React.FC = () => {
           }
         )
         .then((response) => {
+          debugger
           if (
             response.data &&
             response.data.data &&
@@ -88,7 +91,7 @@ const DropDowns: React.FC = () => {
       debugger;
       axios
         .post(
-          "https://localhost:44310/api/DropdownApi/GetDistrictByDivisionId",
+          `${constants.dropDownApi}/api/DropdownApi/GetDistrictByDivisionId`,
           `DivisionId=${encodeURIComponent(selectdivisions)}`, // Send as form-data string
           {
             headers: {

@@ -11,9 +11,9 @@ const root = ReactDOM.createRoot(
 );
 root.render(
   <React.StrictMode>
-   <WatherReport />
+   {/* <WatherReport /> */}
    <DropDowns/>
-   <DataInsert/>
+   {/* <DataInsert/> */}
   </React.StrictMode>
 );
 
