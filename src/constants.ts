@@ -1,5 +1,5 @@
 const Strings ={
-    dropDownApi:"https://bynaveen.loca.lt/"
+    dropDownApi:"https://bynaveen.loca.lt"
 }
 
 export default Strings;
