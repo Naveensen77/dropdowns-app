@@ -10,12 +10,13 @@ interface Priority {
 
 const DataInsert: React.FC = () => {
   const [PriorityName, setPriorityName] = useState<string | null>(null);
-  const [PriorityCode, setPriorityCode] = useState<string | null>(null);
+  const [PriorityCode, setPriorityCode] = useState<number | null>(null);
   const [PriorityList, setPriority] = useState<Priority[]>([]);
+  const [priorityId, setEditId] = useState<number | null>(null);
 
   useEffect(() => {
-    GetPriority();
-  });
+    getAllPriorities();
+  }, []);
 
   function SaveData() {
     debugger;
@@ -26,6 +27,7 @@ const DataInsert: React.FC = () => {
           {
             PriorityName,
             PriorityCode,
+            priorityId
           },
           {
             headers: {
@@ -38,19 +40,24 @@ const DataInsert: React.FC = () => {
           if (response.data.status == true) {
             alert("Data Save Successfully");
             setPriorityName("");
-            setPriorityCode("");
+            setPriorityCode(null);
           }
         });
     } else {
       alert("all fields are mandatory");
     }
   }
-  function GetPriority() {
+  function getAllPriorities() {
     axios.get(`${constants.ApiUrl}/api/DropdownApi/GetPriority`).then((res) => {
-      debugger
       setPriority(res.data.data);
     });
   }
+  const editRow = (item: Priority) => {
+    debugger
+    setPriorityName(item.priorityName);
+    setPriorityCode(item.priorityCode);
+    setEditId(item.priorityId);
+  };
   return (
     <div className="card">
       <div className="card-body">
@@ -61,7 +68,8 @@ const DataInsert: React.FC = () => {
           <div className="col-md-3">
             <label className="form-label">Priority Name:</label>
             <input
-              className="form-control" placeholder="Enter Priority Name"
+              className="form-control"
+              placeholder="Enter Priority Name"
               value={PriorityName ?? ""}
               onChange={(e) => setPriorityName(e.target.value)}
             ></input>
@@ -70,14 +78,15 @@ const DataInsert: React.FC = () => {
           <div className="col-md-3">
             <label className="form-label">Priority Code:</label>
             <input
-              className="form-control" placeholder="Enter Priority Code"
+              className="form-control"
+              placeholder="Enter Priority Code"
               value={PriorityCode ?? ""}
-              onChange={(e) => setPriorityCode(e.target.value)}
+              onChange={(e) => setPriorityCode(Number(e.target.value))}
             ></input>
           </div>
           <div className="col-md-3 mt-4 py-2">
             <button className="btn btn-outline-primary" onClick={SaveData}>
-              Save
+              {priorityId ? "Update" : "Save"}
             </button>
           </div>
         </div>
@@ -91,18 +100,21 @@ const DataInsert: React.FC = () => {
                 <th>Edit Buttons</th>
               </thead>
               <tbody>
-                {PriorityList.length > 0 ?(
-                  PriorityList.map((item,index) => 
-                  <tr key={item.priorityId}>
-                    <td> {index + 1}</td>
-                    <td>{item.priorityName}</td>
-                    <td>{item.priorityCode}</td>
-                    <td><button className="btn">Edit</button></td>
-                  </tr>
-                  )): (
-                    <tr>
-                      <td colSpan={4}>No data found</td>
+                {PriorityList.length > 0 ? (
+                  PriorityList.map((item, index) => (
+                    <tr key={item.priorityId}>
+                      <td> {index + 1}</td>
+                      <td>{item.priorityName}</td>
+                      <td>{item.priorityCode}</td>
+                      <td>
+                        <button className="btn" onClick={() => editRow(item)}>Edit</button>
+                      </td>
                     </tr>
+                  ))
+                ) : (
+                  <tr>
+                    <td colSpan={4}>No data found</td>
+                  </tr>
                 )}
               </tbody>
             </table>
