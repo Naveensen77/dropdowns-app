@@ -127,7 +127,7 @@ const DropDowns: React.FC = () => {
           className="form-control"
           onChange={(e) => setSelectedState(Number(e.target.value))}
           defaultValue="">
-          <option value="">Select a state</option>
+          <option value="">Select a state:</option>
           {states.map((state) => (
             <option key={state.stateId} value={state.stateId}>
               {state.stateNameEng}
@@ -155,7 +155,7 @@ const DropDowns: React.FC = () => {
       </div>
 
       <div className="col-md-3">
-        <label className="form-label">District</label>
+        <label className="form-label">District:</label>
         <select className="form-control" disabled={!selectdivisions}>
           <option value="">Select a District</option>
           {district.map((district) => (
