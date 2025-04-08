@@ -27,7 +27,7 @@ const DropDowns: React.FC = () => {
   useEffect(() => {
     // Fetch states
     axios
-      .post(`${constants.dropDownApi}/api/DropdownApi/GetState`, {
+      .post(`${constants.ApiUrl}/api/DropdownApi/GetState`, {
         headers: {
           "Content-Type": "application/json",
         },
@@ -56,7 +56,7 @@ const DropDowns: React.FC = () => {
       // Fetch divisions based on selected state
       axios
         .post(
-          `${constants.dropDownApi}/api/DropdownApi/GetDivision?stateId=${selectedState}`,
+          `${constants.ApiUrl}/api/DropdownApi/GetDivision?stateId=${selectedState}`,
           {
             headers: {
               "Content-Type": "application/json",
@@ -91,7 +91,7 @@ const DropDowns: React.FC = () => {
       debugger;
       axios
         .post(
-          `${constants.dropDownApi}/api/DropdownApi/GetDistrictByDivisionId`,
+          `${constants.ApiUrl}/api/DropdownApi/GetDistrictByDivisionId`,
           `DivisionId=${encodeURIComponent(selectdivisions)}`, // Send as form-data string
           {
             headers: {
