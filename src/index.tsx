@@ -1,9 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import reportWebVitals from './reportWebVitals';
-import DropDowns from './DropDowns';
-// import WatherReport from './WatherReport';
-import DataInsert from './DataInsert'
+// import DropDowns from './DropDowns';
+import WatherReport from './WatherReport';
+// import DataInsert from './DataInsert'
 // import Dashboard from './Dashboard'
 import "bootstrap/dist/css/bootstrap.min.css";
 
@@ -12,8 +12,8 @@ const root = ReactDOM.createRoot(
 );
 root.render(
   <React.StrictMode>
-   {/* <WatherReport /> */}
-   <DropDowns/>
+   <WatherReport />
+   {/* <DropDowns/> */}
    {/* <DataInsert/> */}
    {/* <Dashboard/> */}
   </React.StrictMode>

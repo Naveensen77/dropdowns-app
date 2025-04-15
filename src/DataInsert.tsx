@@ -99,7 +99,7 @@ const DataInsert: React.FC = () => {
                 <th>Priority Code</th>
                 <th>Edit Buttons</th>
               </thead>
-              <tbody>
+              <tbody> 
                 {PriorityList.length > 0 ? (
                   PriorityList.map((item, index) => (
                     <tr key={item.priorityId}>
