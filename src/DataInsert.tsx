@@ -37,7 +37,7 @@ const DataInsert: React.FC = () => {
         )
         .then((response) => {
           debugger;
-          if (response.data.status == true) {
+          if (response.data.status === true) {
             alert("Data Save Successfully");
             setPriorityName("");
             setPriorityCode(null);
